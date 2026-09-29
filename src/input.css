@@ -1,0 +1,610 @@
+/*!
+Theme Name: cusco
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: cusco
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aquí abajo puedes meter tu CSS personalizado si Tailwind no te alcanza para algo */
+
+p{
+	@apply text-gray-600 text-justify mb-5 leading-6 font-normal
+}
+
+#breadcrumb a{
+	font-weight: 600;
+	color: #038426;
+}
+
+.n2_clear ss3-force-full-width{
+	width: 100% !important;
+}
+
+/* ---- Tipografía base: Inter para toda la web -------------------------- */
+/* La fuente ya se carga con <link> en header.php; aquí solo se aplica. */
+html,
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", roboto, sans-serif;
+}
+
+.custom-logo-link,
+.custom-logo {
+	display: block;
+	height: 5.5rem;
+	width: auto;
+	object-fit: contain;
+}
+
+@media (min-width: 1024px) {
+	.custom-logo-link,
+	.custom-logo {
+		height: 7rem;
+	}
+}
+
+.mobile-menu-logo .custom-logo-link,
+.mobile-menu-logo .custom-logo {
+	height: 2.75rem;
+}
+
+/* Inputs más grandes (50% más) */
+form input[type="text"],
+form input[type="search"],
+form input[type="email"],
+form input[type="tel"],
+form textarea,
+form select {
+	font-size: 1.5rem;
+	padding: 1rem 1.25rem;
+	line-height: 1.4;
+	min-height: 3.25rem;
+	width: 100%;
+}
+
+@media (max-width: 768px) {
+	form input[type="text"],
+	form input[type="search"],
+	form input[type="email"],
+	form input[type="tel"],
+	form textarea,
+	form select {
+		font-size: 1.25rem;
+		padding: 0.875rem 1rem;
+		min-height: 2.9rem;
+	}
+}
+
+/* ==========================================================================
+   Viñetas del contenido de tours / entradas (salida de the_content en .prose)
+   El Preflight de Tailwind hace  ul,ol { list-style:none; margin:0; padding:0 }
+   por lo que las viñetas quedan sin sangría y desalineadas. Aquí se restauran.
+   Se usan solo listas hijas directas de .prose para no afectar los tabs.
+   ========================================================================== */
+.prose > ul,
+.prose > ol {
+	margin: 0 0 1.25rem;
+	padding-left: 1.6rem;
+}
+
+.prose > ul {
+	list-style: disc outside;
+}
+
+.prose > ol {
+	list-style: decimal outside;
+}
+
+.prose > ul ul {
+	list-style-type: circle;
+}
+
+.prose > ol ol {
+	list-style-type: lower-alpha;
+}
+
+.prose > ul li,
+.prose > ol li {
+	margin: 0.45rem 0;
+	padding-left: 0.35rem;
+}
+
+.prose > ul li::marker,
+.prose > ol li::marker {
+	color: #008323;
+}
+
+.prose > ul ul,
+.prose > ul ol,
+.prose > ol ul,
+.prose > ol ol {
+	margin: 0.45rem 0 0;
+}
+
+/* ==========================================================================
+   Responsive Tabs — diseño mejorado
+   Itinerary / Inclusions / Not Include / Packing List / Faqs
+   Colores del tema cusco: verde #008323, navy #1D2834, amarillo #ffcc00
+   ========================================================================== */
+.responsive-tabs-wrapper {
+	--rt-brand: #008323;
+	--rt-brand-dark: #00691c;
+	--rt-navy: #1d2834;
+	--rt-accent: #ffcc00;
+	--rt-tint: #e3f1e7;
+	--rt-tint-2: #d3e9d9;
+	--rt-surface: #f9fbfa;
+	--rt-border: #e6ece8;
+	--rt-text: #41505c;
+	--rt-muted: #8a97a0;
+	--rt-font-size: 15px;
+
+	margin: 2.75rem 0;
+	font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+	color: var(--rt-navy);
+}
+
+/* ---- Tarjeta contenedora --------------------------------------------- */
+.responsive-tabs {
+	background: #fff;
+	border: 1px solid var(--rt-border);
+	border-radius: 18px;
+	box-shadow: 0 18px 44px -20px rgba(29, 40, 52, 0.22);
+	overflow: hidden;
+}
+
+/* ---- Barra de pestañas (desktop): botones segmentados ------------------- */
+.responsive-tabs__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin: 0;
+	padding: 1.1rem 1.25rem;
+	list-style: none;
+	background: #fff;
+	border-bottom: 1px solid var(--rt-border);
+}
+
+.responsive-tabs__list__item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 1 1 auto;
+	margin: 0;
+	padding: 0.85rem 1.25rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	line-height: 1;
+	text-align: center;
+	color: var(--rt-brand-dark);
+	background: var(--rt-tint);
+	white-space: nowrap;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.responsive-tabs__list__item:hover {
+	background: var(--rt-tint-2);
+}
+
+.responsive-tabs__list__item:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(0, 131, 35, 0.35);
+}
+
+.responsive-tabs__list__item--active,
+.responsive-tabs__list__item--active:hover {
+	color: #fff;
+	background: var(--rt-brand);
+	box-shadow: 0 8px 18px -8px rgba(0, 131, 35, 0.6);
+}
+
+/* ---- Encabezados tipo acordeón (mobile) ------------------------------- */
+.responsive-tabs__heading {
+	display: none; /* el plugin lo muestra en mobile */
+	position: relative;
+	margin: 0;
+	padding: 1.15rem 3.4rem 1.15rem 1.35rem;
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--rt-navy);
+	background: #fff;
+	border-top: 1px solid var(--rt-border);
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.responsive-tabs__heading:first-of-type {
+	border-top: 0;
+}
+
+.responsive-tabs__heading::after {
+	content: "+";
+	position: absolute;
+	top: 50%;
+	right: 1.15rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.75rem;
+	height: 1.75rem;
+	font-size: 1.15rem;
+	font-weight: 400;
+	line-height: 1;
+	color: var(--rt-brand);
+	background: var(--rt-tint);
+	border-radius: 50%;
+	transform: translateY(-50%) rotate(0deg);
+	transition: transform 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.responsive-tabs__heading:hover {
+	background: var(--rt-surface);
+}
+
+.responsive-tabs__heading--active {
+	color: var(--rt-brand);
+	background: var(--rt-surface);
+}
+
+.responsive-tabs__heading--active::after {
+	color: #fff;
+	background: var(--rt-brand);
+	transform: translateY(-50%) rotate(45deg);
+}
+
+/* ---- Paneles de contenido ------------------------------------------------ */
+.responsive-tabs__panel {
+	padding: 2rem 2.15rem 2.25rem;
+	font-size: var(--rt-font-size); /* 15px */
+	line-height: 1.75;
+	color: var(--rt-text);
+	animation: rt-fade 0.35s ease both;
+}
+
+@keyframes rt-fade {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.responsive-tabs__panel > *:first-child {
+	margin-top: 0;
+}
+
+.responsive-tabs__panel > *:last-child {
+	margin-bottom: 0;
+}
+
+.responsive-tabs__panel > p,
+.responsive-tabs__panel .wp-block-paragraph,
+.responsive-tabs__panel li {
+	font-size: var(--rt-font-size); /* 15px párrafos y viñetas */
+}
+
+.responsive-tabs__panel > p,
+.responsive-tabs__panel .wp-block-paragraph {
+	margin: 0 0 1rem;
+}
+
+/* Primer párrafo como entradilla (mismo tamaño, solo color) */
+.responsive-tabs__panel > p:first-of-type,
+.responsive-tabs__panel .wp-block-paragraph:first-of-type {
+	color: var(--rt-navy);
+}
+
+.responsive-tabs__panel :where(h2, h3, h4) {
+	margin: 1.75rem 0 0.75rem;
+	color: var(--rt-navy);
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.responsive-tabs__panel :where(h2, h3)::before {
+	content: "";
+	display: inline-block;
+	width: 0.55rem;
+	height: 0.55rem;
+	margin-right: 0.6rem;
+	vertical-align: middle;
+	background: var(--rt-accent);
+	border-radius: 2px;
+	transform: rotate(45deg);
+}
+
+.responsive-tabs__panel a {
+	color: var(--rt-brand);
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+}
+
+.responsive-tabs__panel a:hover {
+	color: var(--rt-brand-dark);
+}
+
+.responsive-tabs__panel ol {
+	margin: 0 0 1rem;
+	padding-left: 1.4rem;
+	list-style: decimal;
+}
+
+.responsive-tabs__panel ol li {
+	margin: 0.5rem 0;
+	padding-left: 0.35rem;
+}
+
+.responsive-tabs__panel ol li::marker {
+	color: var(--rt-brand);
+	font-weight: 700;
+}
+
+.responsive-tabs__panel ul {
+	margin: 0 0 1rem;
+	padding-left: 0;
+	list-style: none;
+}
+
+.responsive-tabs__panel ul li {
+	position: relative;
+	margin: 0.5rem 0;
+	padding-left: 1.4rem;
+}
+
+.responsive-tabs__panel ul li::before {
+	content: "";
+	position: absolute;
+	left: 0.3rem;
+	top: 0.85em;
+	width: 0.45rem;
+	height: 0.45rem;
+	background: var(--rt-brand);
+	border-radius: 50%;
+	transform: translateY(-50%);
+}
+
+/* ---- Fallback sin JavaScript --------------------------------------------- */
+.responsive-tabs:not(.responsive-tabs--enabled) .responsive-tabs__list {
+	display: none;
+}
+
+.responsive-tabs:not(.responsive-tabs--enabled) .responsive-tabs__heading {
+	display: block;
+}
+
+/* ---- Breakpoint: pasa a acordeón -------------------------------------- */
+@media (max-width: 768px) {
+	.responsive-tabs {
+		border-radius: 14px;
+	}
+
+	.responsive-tabs__list {
+		display: none;
+	}
+
+	.responsive-tabs__heading {
+		display: block;
+	}
+
+	.responsive-tabs__panel {
+		padding: 0.35rem 1.35rem 1.6rem;
+		animation: none;
+	}
+}
+
+/* ==========================================================================
+   Formulario de reserva del tour (aside de single-tour.php)
+   OJO: el bloque global  form input[type="text"]  tiene especificidad (0,1,2)
+   — los selectores de atributo pesan como una clase. Por eso los campos se
+   scopean bajo  .tbf-field  →  (0,2,1), que sí le gana.
+   ========================================================================== */
+.tour-booking-form {
+	font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+	color: #1d2834;
+}
+
+.tour-booking-form .tbf-title {
+	margin: 0;
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 800;
+	color: #008323;
+}
+
+.tour-booking-form .tbf-rule {
+	width: 3.5rem;
+	height: 3px;
+	margin: 0.6rem auto 1.5rem;
+	background: #ffcc00;
+	border-radius: 2px;
+}
+
+.tour-booking-form label {
+	display: block;
+	margin: 0 0 0.35rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: #1d2834;
+}
+
+.tour-booking-form .tbf-field {
+	margin-bottom: 1rem;
+}
+
+.tour-booking-form .tbf-field input,
+.tour-booking-form .tbf-field textarea {
+	box-sizing: border-box;
+	display: block;
+	margin: 0;
+	font-family: inherit;
+	color: #1d2834;
+	background: #fff;
+	border: 1px solid #cfd8d2;
+	border-radius: 6px;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+	/* !important para ganarle al bloque global  form input[type="text"] { ... } */
+	width: 100% !important;
+	height: auto !important;
+	min-height: 0 !important;
+	padding: 0.6rem 0.75rem !important;
+	font-size: 0.95rem !important;
+	line-height: 1.4 !important;
+}
+
+.tour-booking-form .tbf-field textarea {
+	min-height: 7rem !important;
+	resize: vertical;
+}
+
+.tour-booking-form .tbf-field input:focus,
+.tour-booking-form .tbf-field textarea:focus {
+	outline: none;
+	border-color: #008323;
+	box-shadow: 0 0 0 3px rgba(0, 131, 35, 0.15);
+}
+
+.tour-booking-form .tbf-field input[readonly] {
+	background: #f4f7f5;
+	color: #41505c;
+	cursor: default;
+}
+
+.tour-booking-form .tbf-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.85rem;
+}
+
+.tour-booking-form .tbf-submit {
+	width: 100%;
+	margin-top: 0.5rem;
+	padding: 0.9rem 1.25rem;
+	font-size: 0.9rem;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	color: #fff;
+	background: #008323;
+	border: 0;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.tour-booking-form .tbf-submit:hover {
+	background: #00691c;
+}
+
+.tour-booking-form .tbf-note {
+	margin: 0 0 1rem;
+	padding: 0.75rem 0.9rem;
+	font-size: 0.85rem;
+	line-height: 1.5;
+	border-radius: 8px;
+}
+
+.tour-booking-form .tbf-note--ok {
+	color: #00691c;
+	background: #e3f1e7;
+	border: 1px solid #b6dcc0;
+}
+
+.tour-booking-form .tbf-note--err {
+	color: #9b1c1c;
+	background: #fdeaea;
+	border: 1px solid #f5c2c2;
+}
+
+/* ---- Compatibilidad con Contact Form 7 --------------------------------- */
+.tour-booking-form .wpcf7 {
+	margin: 0;
+}
+
+.tour-booking-form .wpcf7-form-control-wrap {
+	display: block;
+}
+
+.tour-booking-form .tbf-row .wpcf7-form-control-wrap {
+	margin: 0;
+}
+
+/* El grid de Adults / Children: cada columna es un <span> */
+.tour-booking-form .tbf-row > span {
+	display: block;
+	min-width: 0;
+}
+
+.tour-booking-form [class*="wpcf7"] .tbf-submit,
+.tour-booking-form .tbf-submit {
+	display: block;
+}
+
+/* Aviso de respuesta (ok / error) con el mismo estilo que .tbf-note */
+.tour-booking-form .wpcf7-response-output {
+	margin: 1.25rem 0 0 !important;
+	padding: 0.75rem 0.9rem !important;
+	font-size: 0.85rem;
+	line-height: 1.5;
+	border: 1px solid transparent !important;
+	border-radius: 8px !important;
+}
+
+.tour-booking-form form.invalid .wpcf7-response-output,
+.tour-booking-form form.unaccepted .wpcf7-response-output,
+.tour-booking-form form.spam .wpcf7-response-output,
+.tour-booking-form .wpcf7-response-output.wpcf7-validation-errors {
+	color: #9b1c1c;
+	background: #fdeaea !important;
+	border-color: #f5c2c2 !important;
+}
+
+.tour-booking-form form.sent .wpcf7-response-output,
+.tour-booking-form .wpcf7-response-output.wpcf7-mail-sent-ok {
+	color: #00691c;
+	background: #e3f1e7 !important;
+	border-color: #b6dcc0 !important;
+}
+
+.tour-booking-form .wpcf7-not-valid-tip {
+	display: block;
+	margin-top: 0.3rem;
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #9b1c1c;
+}
+
+.tour-booking-form .tbf-field input.wpcf7-not-valid,
+.tour-booking-form .tbf-field textarea.wpcf7-not-valid {
+	border-color: #e05656 !important;
+}
+
+.tour-booking-form .wpcf7-spinner {
+	display: block;
+	margin: 0.85rem auto 0;
+}
+
+

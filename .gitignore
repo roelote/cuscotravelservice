@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build artifacts
+*.zip
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
