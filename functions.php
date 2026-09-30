@@ -184,11 +184,6 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
- * Custom post types (Tours).
- */
-require get_template_directory() . '/inc/post-types.php';
-
-/**
  * Tour booking form handler.
  */
 require get_template_directory() . '/inc/booking-form.php';
