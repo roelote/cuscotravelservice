@@ -378,44 +378,48 @@ get_header();
   </div>
 
 
-  <div class="mx-auto relative bg-cover bg-center py-24" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/portada.png');">
+  <div class="mx-auto relative bg-cover bg-center py-10" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/portada.png');">
     <div class="absolute inset-0 bg-[#008323]/85 z-0"></div>
 
-    <div class="relative z-10 container flex flex-col items-center">
-      <h2 class="text-white text-[42px] font-extrabold mb-14 tracking-tight">
+    <div class="relative z-10 container flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <h2 class="text-white text-[22px] sm:text-[24px] font-extrabold tracking-tight max-w-md leading-snug">
         <?php echo cusco_l10n( "Experience the heart of Peru with Cusco Travel Service", "Vive el corazón de Perú con Cusco Travel Service" ); ?>
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 w-full gap-8">
-        <div class="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-lg">
-          <div class="w-11 h-11 rounded-full bg-[#ffcc00] flex items-center justify-center text-black mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6 text-[#ffcc00] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <div>
+            <div class="text-[#ffcc00] text-[22px] font-extrabold leading-none">12+</div>
+            <div class="text-white/80 text-[11px] font-medium tracking-wide whitespace-nowrap"><?php echo cusco_l10n( 'years of experience', 'años de experiencia' ); ?></div>
           </div>
-          <div class="text-[#ffcc00] text-[34px] font-extrabold leading-none mb-2">12+</div>
-          <div class="text-white text-[13px] font-medium tracking-wide"><?php echo cusco_l10n( 'years of experience', 'años de experiencia' ); ?></div>
         </div>
 
-        <div class="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-lg">
-          <div class="w-11 h-11 rounded-full bg-[#ffcc00] flex items-center justify-center text-black mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+        <div class="hidden md:block w-px h-9 bg-white/20"></div>
+
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6 text-[#ffcc00] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <div>
+            <div class="text-[#ffcc00] text-[22px] font-extrabold leading-none">10k+</div>
+            <div class="text-white/80 text-[11px] font-medium tracking-wide whitespace-nowrap"><?php echo cusco_l10n( 'happy travelers', 'viajeros felices' ); ?></div>
           </div>
-          <div class="text-[#ffcc00] text-[34px] font-extrabold leading-none mb-2">10k+</div>
-          <div class="text-white text-[13px] font-medium tracking-wide"><?php echo cusco_l10n( 'happy travelers', 'viajeros felices' ); ?></div>
         </div>
 
-        <div class="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-lg">
-          <div class="w-11 h-11 rounded-full bg-[#ffcc00] flex items-center justify-center text-black mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            </svg>
+        <div class="hidden md:block w-px h-9 bg-white/20"></div>
+
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6 text-[#ffcc00] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <div>
+            <div class="text-[#ffcc00] text-[22px] font-extrabold leading-none">50+</div>
+            <div class="text-white/80 text-[11px] font-medium tracking-wide whitespace-nowrap"><?php echo cusco_l10n( 'tour destinations', 'destinos turísticos' ); ?></div>
           </div>
-          <div class="text-[#ffcc00] text-[34px] font-extrabold leading-none mb-2">50+</div>
-          <div class="text-white text-[13px] font-medium tracking-wide"><?php echo cusco_l10n( 'tour destinations', 'destinos turísticos' ); ?></div>
         </div>
       </div>
     </div>
