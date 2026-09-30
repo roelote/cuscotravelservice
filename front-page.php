@@ -130,62 +130,74 @@ get_header();
             <div class="w-8 h-[2px] bg-[#008323]"></div>
             <span class="text-[#008323] font-bold text-[10px] tracking-widest uppercase"><?php echo cusco_l10n( 'EXCURSIONS', 'EXCURSIONES' ); ?></span>
           </div>
-          <h2 class="text-[#1D2834] text-[26px] font-extrabold uppercase tracking-tight"><?php echo cusco_l10n( 'OUR RECOMMENDED TOURS', 'NUESTROS TOURS RECOMENDADOS' ); ?></h2>
+          <h2 class="text-[#1D2834] text-[26px] font-extrabold uppercase tracking-tight"><?php echo cusco_l10n( 'OUR TOP TOURS MACHU PICCHU', 'NUESTROS TOURS RECOMENDADOS' ); ?></h2>
         </div>
-        <a href="#" class="border border-[#008323] text-[#008323] font-bold text-[11px] px-6 py-2.5 hover:bg-[#008323] hover:text-white transition-colors">
-          <?php echo cusco_l10n( 'SEE ALL TOURS', 'VER TODOS LOS TOURS' ); ?>
-        </a>
       </div>
 
       <div class="relative px-1 sm:px-8">
         <div class="swiper related-tours-swiper">
           <div class="swiper-wrapper">
             <?php
-            $args = array(
-              'post_type'      => 'tour',
-              'posts_per_page' => -1,
-              'category_name'  => 'inca-trail',
-              'orderby'        => 'date',
-              'order'          => 'DESC',
-              'post__not_in' => array(get_the_ID())
-            );
+            $top_tours = get_field( 'top_tours_machu_picchu' );
 
-            $query_posts = new WP_Query($args);
-
-            if ($query_posts->have_posts()) :
-              while ($query_posts->have_posts()) : $query_posts->the_post();
-                $categories = get_the_category();
-                $cat_name   = !empty($categories) ? esc_html($categories[0]->name) : 'General';
+            if ( $top_tours ) :
+              foreach ( $top_tours as $post ) :
+                setup_postdata( $post );
 
                 $img_url = has_post_thumbnail()
                   ? get_the_post_thumbnail_url(get_the_ID(), 'medium_large')
                   : 'https://images.unsplash.com/photo-1531065208531-4036c0dba3ca?auto=format&fit=crop&w=800&q=80';
+
+                // Pull this tour's real price/duration/difficulty/group data (same ACF fields as single-tour.php).
+                $seccion_2   = get_field('detalles_del_tour');
+                $precio_tour = isset($seccion_2['precio']) ? $seccion_2['precio'] : '';
+                $tour_details = isset($seccion_2['detalles']) && is_array($seccion_2['detalles']) ? $seccion_2['detalles'] : [];
+
+                $tour_meta = array();
+                foreach ($tour_details as $item) {
+                  $tipo = isset($item['seleccionar']) ? strtolower((string) $item['seleccionar']) : '';
+                  if (in_array($tipo, array('duration', 'difficulty', 'group'), true) && !empty($item['text'])) {
+                    $tour_meta[$tipo] = $item['text'];
+                  }
+                }
             ?>
                 <div class="swiper-slide !h-auto">
-                  <div class="h-full rounded-[12px] border border-gray-200 bg-white p-3.5 shadow-sm flex flex-col">
-                    <img src="<?php echo esc_url($img_url); ?>" alt="Inca Trail" class="w-full h-[170px] object-cover rounded-[8px] mb-4">
-                    <h3 class="font-bold text-[#1D2834] text-base leading-snug mb-3"><?php the_title(); ?></h3>
+                  <div class="group h-full rounded-[14px] border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="relative h-[220px] overflow-hidden shrink-0">
+                      <img src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
 
-                    <div class="flex items-center gap-3 text-gray-500 text-[10px] font-semibold mb-3">
-                      <div class="flex items-center gap-1">
-                        <svg class="w-3.5 h-3.5 text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-bold text-[#1D2834] text-lg leading-snug mb-3 line-clamp-2"><?php the_title(); ?></h3>
+
+                    <?php if ( !empty($tour_meta) ) : ?>
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-gray-500 text-[13px] font-semibold mb-3">
+                      <?php if ( !empty($tour_meta['duration']) ) : ?>
+                      <div class="flex items-center gap-1.5">
+                        <svg class="w-[18px] h-[18px] text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
-                        <?php echo cusco_l10n( '4 Days 3 Nights', '4 Días 3 Noches' ); ?>
+                        <?php echo esc_html( $tour_meta['duration'] ); ?>
                       </div>
-                      <div class="flex items-center gap-1">
-                        <svg class="w-3.5 h-3.5 text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <?php endif; ?>
+                      <?php if ( !empty($tour_meta['difficulty']) ) : ?>
+                      <div class="flex items-center gap-1.5">
+                        <svg class="w-[18px] h-[18px] text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
-                        <?php echo cusco_l10n( 'Moderate', 'Moderado' ); ?>
+                        <?php echo esc_html( $tour_meta['difficulty'] ); ?>
                       </div>
-                      <div class="flex items-center gap-1">
-                        <svg class="w-3.5 h-3.5 text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <?php endif; ?>
+                      <?php if ( !empty($tour_meta['group']) ) : ?>
+                      <div class="flex items-center gap-1.5">
+                        <svg class="w-[18px] h-[18px] text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
-                        <?php echo cusco_l10n( '17 People', '17 Personas' ); ?>
+                        <?php echo esc_html( $tour_meta['group'] ); ?>
                       </div>
+                      <?php endif; ?>
                     </div>
+                    <?php endif; ?>
 
                     <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-grow line-clamp-2">
                       <?php echo get_the_excerpt() ?>
@@ -193,8 +205,12 @@ get_header();
 
                     <div class="flex justify-between items-end mt-auto">
                       <div class="flex flex-col">
-                        <span class="text-[#008323] font-extrabold text-[22px] leading-none">$ 205</span>
-                        <span class="text-gray-400 text-[10px] mt-1"><?php echo cusco_l10n( 'per person', 'por persona' ); ?></span>
+                        <?php if ( !empty($precio_tour) ) : ?>
+                          <span class="text-[#008323] font-extrabold text-[22px] leading-none"><?php echo esc_html($precio_tour); ?></span>
+                          <span class="text-gray-400 text-[10px] mt-1"><?php echo cusco_l10n( 'per person', 'por persona' ); ?></span>
+                        <?php else : ?>
+                          <span class="text-[#008323] font-extrabold text-[13px] leading-none"><?php echo cusco_l10n( 'Contact for price', 'Consultar precio' ); ?></span>
+                        <?php endif; ?>
                       </div>
                       <a href="<?php the_permalink(); ?>" class="bg-[#008323] text-white text-[11px] font-bold px-4 py-2 rounded-[5px] hover:bg-[#00691c] transition-colors flex items-center gap-1.5">
                         <?php echo cusco_l10n( 'Learn more', 'Saber más' ); ?>
@@ -203,13 +219,14 @@ get_header();
                         </svg>
                       </a>
                     </div>
+                    </div>
                   </div>
                 </div>
             <?php
-              endwhile;
+              endforeach;
               wp_reset_postdata();
             else :
-              echo '<p class="text-gray-500 text-[12px]">' . cusco_l10n( 'No related tours found.', 'No se encontraron tours relacionados.' ) . '</p>';
+              echo '<p class="text-gray-500 text-[12px]">' . cusco_l10n( 'No tours selected yet.', 'Aún no se han seleccionado tours.' ) . '</p>';
             endif;
             ?>
           </div>
@@ -220,6 +237,137 @@ get_header();
           </svg>
         </button>
         <button type="button" class="related-tours-next absolute right-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[#008323] bg-white text-[#008323] shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-[#008323] hover:text-white disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Next related tour', 'Siguiente tour relacionado' ) ); ?>">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="bg-[#F8F9FA] py-12">
+    <div class="container ">
+      <div class="flex flex-col md:flex-row gap-5 items-start justify-between lg:items-end mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <div class="w-8 h-[2px] bg-[#008323]"></div>
+            <span class="text-[#008323] font-bold text-[10px] tracking-widest uppercase"><?php echo cusco_l10n( 'CLASSICS', 'CLÁSICOS' ); ?></span>
+          </div>
+          <h2 class="text-[#1D2834] text-[26px] font-extrabold uppercase tracking-tight"><?php echo cusco_l10n( 'CLASSIC TOURS', 'TOURS CLÁSICOS' ); ?></h2>
+        </div>
+      </div>
+
+      <div class="relative px-1 sm:px-8">
+        <div class="swiper classic-tours-swiper">
+          <div class="swiper-wrapper">
+            <?php
+            $classic_tours = get_field( 'classic_tours' );
+
+            if ( $classic_tours ) :
+              foreach ( $classic_tours as $row ) :
+                $post = isset( $row['tour'] ) ? $row['tour'] : null;
+
+                if ( ! ( $post instanceof WP_Post ) ) {
+                  continue;
+                }
+
+                setup_postdata( $post );
+
+                $img_url = has_post_thumbnail()
+                  ? get_the_post_thumbnail_url(get_the_ID(), 'medium_large')
+                  : 'https://images.unsplash.com/photo-1531065208531-4036c0dba3ca?auto=format&fit=crop&w=800&q=80';
+
+                // Pull this tour's real price/duration/difficulty/group data (same ACF fields as single-tour.php).
+                $seccion_2   = get_field('detalles_del_tour');
+                $precio_tour = isset($seccion_2['precio']) ? $seccion_2['precio'] : '';
+                $tour_details = isset($seccion_2['detalles']) && is_array($seccion_2['detalles']) ? $seccion_2['detalles'] : [];
+
+                $tour_meta = array();
+                foreach ($tour_details as $item) {
+                  $tipo = isset($item['seleccionar']) ? strtolower((string) $item['seleccionar']) : '';
+                  if (in_array($tipo, array('duration', 'difficulty', 'group'), true) && !empty($item['text'])) {
+                    $tour_meta[$tipo] = $item['text'];
+                  }
+                }
+            ?>
+                <div class="swiper-slide !h-auto">
+                  <div class="group h-full rounded-[14px] border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
+                    <div class="relative h-[220px] overflow-hidden shrink-0">
+                      <img src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+
+                    <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-bold text-[#1D2834] text-lg leading-snug mb-3 line-clamp-2"><?php the_title(); ?></h3>
+
+                    <?php if ( !empty($tour_meta) ) : ?>
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-gray-500 text-[13px] font-semibold mb-3">
+                      <?php if ( !empty($tour_meta['duration']) ) : ?>
+                      <div class="flex items-center gap-1.5">
+                        <svg class="w-[18px] h-[18px] text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <?php echo esc_html( $tour_meta['duration'] ); ?>
+                      </div>
+                      <?php endif; ?>
+                      <?php if ( !empty($tour_meta['difficulty']) ) : ?>
+                      <div class="flex items-center gap-1.5">
+                        <svg class="w-[18px] h-[18px] text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                        <?php echo esc_html( $tour_meta['difficulty'] ); ?>
+                      </div>
+                      <?php endif; ?>
+                      <?php if ( !empty($tour_meta['group']) ) : ?>
+                      <div class="flex items-center gap-1.5">
+                        <svg class="w-[18px] h-[18px] text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <?php echo esc_html( $tour_meta['group'] ); ?>
+                      </div>
+                      <?php endif; ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-grow line-clamp-2">
+                      <?php echo get_the_excerpt() ?>
+                    </p>
+
+                    <div class="flex justify-between items-end mt-auto">
+                      <div class="flex flex-col">
+                        <?php if ( !empty($precio_tour) ) : ?>
+                          <span class="text-[#008323] font-extrabold text-[22px] leading-none"><?php echo esc_html($precio_tour); ?></span>
+                          <span class="text-gray-400 text-[10px] mt-1"><?php echo cusco_l10n( 'per person', 'por persona' ); ?></span>
+                        <?php else : ?>
+                          <span class="text-[#008323] font-extrabold text-[13px] leading-none"><?php echo cusco_l10n( 'Contact for price', 'Consultar precio' ); ?></span>
+                        <?php endif; ?>
+                      </div>
+                      <a href="<?php the_permalink(); ?>" class="bg-[#008323] text-white text-[11px] font-bold px-4 py-2 rounded-[5px] hover:bg-[#00691c] transition-colors flex items-center gap-1.5">
+                        <?php echo cusco_l10n( 'Learn more', 'Saber más' ); ?>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                      </a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+            <?php
+              endforeach;
+              wp_reset_postdata();
+            else :
+              echo '<p class="text-gray-500 text-[12px]">' . cusco_l10n( 'No tours selected yet.', 'Aún no se han seleccionado tours.' ) . '</p>';
+            endif;
+            ?>
+          </div>
+        </div>
+        <button type="button" class="classic-tours-prev absolute left-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[#008323] bg-white text-[#008323] shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-[#008323] hover:text-white disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Previous classic tour', 'Tour clásico anterior' ) ); ?>">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button type="button" class="classic-tours-next absolute right-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[#008323] bg-white text-[#008323] shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-[#008323] hover:text-white disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Next classic tour', 'Siguiente tour clásico' ) ); ?>">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
           </svg>
@@ -337,26 +485,47 @@ get_header();
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    if (typeof Swiper === 'undefined' || !document.querySelector('.related-tours-swiper')) {
+    if (typeof Swiper === 'undefined') {
       return;
     }
 
-    new Swiper('.related-tours-swiper', {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      navigation: {
-        nextEl: '.related-tours-next',
-        prevEl: '.related-tours-prev'
-      },
-      breakpoints: {
-        640: {
-          slidesPerView: 2
+    if (document.querySelector('.related-tours-swiper')) {
+      new Swiper('.related-tours-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: '.related-tours-next',
+          prevEl: '.related-tours-prev'
         },
-        1024: {
-          slidesPerView: 4
+        breakpoints: {
+          640: {
+            slidesPerView: 2
+          },
+          1024: {
+            slidesPerView: 4
+          }
         }
-      }
-    });
+      });
+    }
+
+    if (document.querySelector('.classic-tours-swiper')) {
+      new Swiper('.classic-tours-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: '.classic-tours-next',
+          prevEl: '.classic-tours-prev'
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2
+          },
+          1024: {
+            slidesPerView: 4
+          }
+        }
+      });
+    }
   });
 </script>
 

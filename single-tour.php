@@ -320,56 +320,87 @@ get_header();
         <div class="swiper related-tours-swiper">
           <div class="swiper-wrapper">
             <?php
+            $current_tour_id = get_the_ID();
+            $current_cats    = get_the_category( $current_tour_id );
+            $current_cat     = !empty( $current_cats ) ? $current_cats[0]->slug : '';
+
             $args = array(
               'post_type'      => 'tour',
-              'posts_per_page' => -1,
-              'category_name'  => 'inca-trail',
+              'posts_per_page' => 8,
               'orderby'        => 'date',
               'order'          => 'DESC',
-              'post__not_in' => array(get_the_ID())
+              'post__not_in'   => array( $current_tour_id ),
             );
 
-            $query_posts = new WP_Query($args);
+            if ( $current_cat ) {
+              $args['category_name'] = $current_cat;
+            }
 
-            $query_posts = new WP_Query($args);
+            $query_posts = new WP_Query( $args );
+
+            // No other tour in the same category? Fall back to any other tour.
+            if ( ! $query_posts->have_posts() && $current_cat ) {
+              $query_posts = new WP_Query( array(
+                'post_type'      => 'tour',
+                'posts_per_page' => 8,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+                'post__not_in'   => array( $current_tour_id ),
+              ) );
+            }
 
             if ($query_posts->have_posts()) :
               while ($query_posts->have_posts()) : $query_posts->the_post();
-                $categories = get_the_category();
-                $cat_name   = !empty($categories) ? esc_html($categories[0]->name) : 'General';
-
                 $img_url = has_post_thumbnail()
                   ? get_the_post_thumbnail_url(get_the_ID(), 'medium_large')
                   : 'https://images.unsplash.com/photo-1531065208531-4036c0dba3ca?auto=format&fit=crop&w=800&q=80';
+
+                // Pull this tour's own price/duration/difficulty/group data (same ACF fields used above).
+                $rel_seccion = get_field('detalles_del_tour');
+                $rel_precio  = isset($rel_seccion['precio']) ? $rel_seccion['precio'] : '';
+                $rel_details = isset($rel_seccion['detalles']) && is_array($rel_seccion['detalles']) ? $rel_seccion['detalles'] : [];
+
+                $rel_meta = array();
+                foreach ($rel_details as $item) {
+                  $tipo = isset($item['seleccionar']) ? strtolower((string) $item['seleccionar']) : '';
+                  if (in_array($tipo, array('duration', 'difficulty', 'group'), true) && !empty($item['text'])) {
+                    $rel_meta[$tipo] = $item['text'];
+                  }
+                }
             ?>
-
-
-
                 <div class="swiper-slide !h-auto">
                   <div class="h-full rounded-[12px] border border-gray-200 bg-white p-3.5 shadow-sm flex flex-col">
-                    <img src="<?php echo esc_url($img_url); ?>" alt="Inca Trail" class="w-full h-[170px] object-cover rounded-[8px] mb-4">
+                    <img src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>" class="w-full h-[170px] object-cover rounded-[8px] mb-4">
                     <h3 class="font-bold text-[#1D2834] text-base leading-snug mb-3"><?php the_title(); ?></h3>
 
+                    <?php if ( !empty($rel_meta) ) : ?>
                     <div class="flex items-center gap-3 text-gray-500 text-[10px] font-semibold mb-3">
+                      <?php if ( !empty($rel_meta['duration']) ) : ?>
                       <div class="flex items-center gap-1">
                         <svg class="w-3.5 h-3.5 text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
-                        <?php echo cusco_l10n( '4 Days 3 Nights', '4 Días 3 Noches' ); ?>
+                        <?php echo esc_html( $rel_meta['duration'] ); ?>
                       </div>
+                      <?php endif; ?>
+                      <?php if ( !empty($rel_meta['difficulty']) ) : ?>
                       <div class="flex items-center gap-1">
                         <svg class="w-3.5 h-3.5 text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
-                        <?php echo cusco_l10n( 'Moderate', 'Moderado' ); ?>
+                        <?php echo esc_html( $rel_meta['difficulty'] ); ?>
                       </div>
+                      <?php endif; ?>
+                      <?php if ( !empty($rel_meta['group']) ) : ?>
                       <div class="flex items-center gap-1">
                         <svg class="w-3.5 h-3.5 text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
-                        <?php echo cusco_l10n( '17 People', '17 Personas' ); ?>
+                        <?php echo esc_html( $rel_meta['group'] ); ?>
                       </div>
+                      <?php endif; ?>
                     </div>
+                    <?php endif; ?>
 
                     <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-grow">
                       <?php echo wp_trim_words(get_the_excerpt(), 10, '...'); ?>
@@ -377,8 +408,12 @@ get_header();
 
                     <div class="flex justify-between items-end mt-auto">
                       <div class="flex flex-col">
-                        <span class="text-[#008323] font-extrabold text-[22px] leading-none">$ 205</span>
-                        <span class="text-gray-400 text-[10px] mt-1"><?php echo cusco_l10n( 'per person', 'por persona' ); ?></span>
+                        <?php if ( !empty($rel_precio) ) : ?>
+                          <span class="text-[#008323] font-extrabold text-[22px] leading-none"><?php echo esc_html($rel_precio); ?></span>
+                          <span class="text-gray-400 text-[10px] mt-1"><?php echo cusco_l10n( 'per person', 'por persona' ); ?></span>
+                        <?php else : ?>
+                          <span class="text-[#008323] font-extrabold text-[13px] leading-none"><?php echo cusco_l10n( 'Contact for price', 'Consultar precio' ); ?></span>
+                        <?php endif; ?>
                       </div>
                       <a href="<?php the_permalink(); ?>" class="bg-[#008323] text-white text-[11px] font-bold px-4 py-2 rounded-[5px] hover:bg-[#00691c] transition-colors flex items-center gap-1.5">
                         <?php echo cusco_l10n( 'Learn more', 'Saber más' ); ?>
@@ -389,8 +424,6 @@ get_header();
                     </div>
                   </div>
                 </div>
-
-
             <?php
               endwhile;
               wp_reset_postdata();

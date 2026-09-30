@@ -1,0 +1,81 @@
+{
+    "key": "group_a7c53da5f021b",
+    "title": "Inicio - Classic Tours",
+    "fields": [
+        {
+            "key": "field_96032af1387f6",
+            "label": "Classic Tours",
+            "name": "classic_tours",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Agrega y ordena las filas con los tours que se mostrarán en el carrusel \"CLASSIC TOURS\" de la portada.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 12,
+            "collapsed": "field_70f67b4498687",
+            "button_label": "Agregar tour",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_70f67b4498687",
+                    "label": "Tour",
+                    "name": "tour",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "tour"
+                    ],
+                    "post_status": [
+                        "publish"
+                    ],
+                    "taxonomy": [],
+                    "return_format": "object",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "parent_repeater": "field_96032af1387f6"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Selección manual (vía repeater) de tours para el carrusel \"Classic Tours\" de la portada (front-page.php).",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1790804115
+}

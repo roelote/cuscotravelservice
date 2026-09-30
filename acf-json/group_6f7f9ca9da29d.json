@@ -1,0 +1,61 @@
+{
+    "key": "group_6f7f9ca9da29d",
+    "title": "Inicio - Mejores Tours Machu Picchu",
+    "fields": [
+        {
+            "key": "field_eae46b17f0dcc",
+            "label": "Mejores Tours (Machu Picchu)",
+            "name": "top_tours_machu_picchu",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Selecciona y ordena los tours que se mostrarán en el carrusel \"Our Top Tours Machu Picchu\" de la portada.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "tour"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": 0,
+            "max": 12,
+            "return_format": "object",
+            "bidirectional": 0,
+            "bidirectional_target": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Selección manual de tours para el carrusel de la portada (front-page.php).",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1790803128
+}
