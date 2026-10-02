@@ -231,12 +231,12 @@ get_header();
             ?>
           </div>
         </div>
-        <button type="button" class="related-tours-prev absolute left-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[#008323] bg-white text-[#008323] shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-[#008323] hover:text-white disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Previous related tour', 'Tour relacionado anterior' ) ); ?>">
+        <button type="button" class="related-tours-prev absolute left-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-green-700 text-white shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-green-800  disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Previous related tour', 'Tour relacionado anterior' ) ); ?>">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
-        <button type="button" class="related-tours-next absolute right-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[#008323] bg-white text-[#008323] shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-[#008323] hover:text-white disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Next related tour', 'Siguiente tour relacionado' ) ); ?>">
+        <button type="button" class="related-tours-next absolute right-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-green-700 text-white shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-green-800  disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Next related tour', 'Siguiente tour relacionado' ) ); ?>">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
           </svg>
@@ -362,12 +362,12 @@ get_header();
             ?>
           </div>
         </div>
-        <button type="button" class="classic-tours-prev absolute left-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[#008323] bg-white text-[#008323] shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-[#008323] hover:text-white disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Previous classic tour', 'Tour clásico anterior' ) ); ?>">
+        <button type="button" class="classic-tours-prev absolute left-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-green-700 text-white shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-green-800  disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Previous classic tour', 'Tour clásico anterior' ) ); ?>">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
-        <button type="button" class="classic-tours-next absolute right-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[#008323] bg-white text-[#008323] shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-[#008323] hover:text-white disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Next classic tour', 'Siguiente tour clásico' ) ); ?>">
+        <button type="button" class="classic-tours-next absolute right-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-green-700 text-white shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-green-800  disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Next classic tour', 'Siguiente tour clásico' ) ); ?>">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
           </svg>
