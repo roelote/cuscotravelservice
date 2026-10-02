@@ -1,0 +1,112 @@
+.minimalist-pll-dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+}
+
+/* Botón principal */
+.pll-dropdown-toggle {
+  background: transparent;
+  border: 1px solid #eaeaea;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.pll-dropdown-toggle:hover {
+  background: #f9f9f9;
+  border-color: #ddd;
+}
+
+/* Icono de flecha (Caret) */
+.pll-caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  vertical-align: middle;
+  border-top: 4px solid #666;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+/* Menú desplegable */
+.pll-dropdown-menu {
+  display: none;
+  /* Oculto por defecto */
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: #fff;
+  min-width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  z-index: 9999;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Clase activa para mostrar el menú */
+.minimalist-pll-dropdown.active .pll-dropdown-menu {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+
+/* Enlaces de idioma */
+.pll-lang-item {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none !important;
+  color: #555;
+  font-size: 14px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.pll-lang-item:hover {
+  background: #f4f4f4;
+  color: #000;
+}
+
+/* Ajuste de las banderas */
+.pll-lang-item img,
+.pll-dropdown-toggle img {
+  width: 18px !important;
+  height: auto !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajuste de las banderas SVG */
+.pll-svg-flag {
+  width: 20px !important;
+  height: 15px !important;
+  object-fit: cover;
+  /* Evita que el SVG se deforme */
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+}

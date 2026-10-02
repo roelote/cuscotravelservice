@@ -36,9 +36,9 @@ get_header();
         
         <?php if (!empty($precio_tour)) : ?>
           <div class="inline-flex max-w-full flex-wrap items-baseline gap-x-3 gap-y-1 bg-[#1D2834]/75 px-4 sm:px-5 py-3 backdrop-blur-sm border border-white/15 rounded-[12px] mt-6 sm:mt-8">
-            <span class="text-[11px] text-gray-200"><?php echo cusco_l10n( 'From', 'Desde' ); ?></span>
+            <span class="text-xs text-gray-200"><?php echo cusco_l10n( 'From', 'Desde' ); ?></span>
             <span class="text-[26px] sm:text-[30px] font-extrabold leading-none text-[#ffcc00]"><?php echo esc_html($precio_tour); ?></span>
-            <span class="text-[11px] text-gray-200"><?php echo cusco_l10n( 'per person', 'por persona' ); ?></span>
+            <span class="text-xs text-gray-200"><?php echo cusco_l10n( 'per person', 'por persona' ); ?></span>
           </div>
         <?php endif; ?>
       </div>
@@ -89,8 +89,8 @@ get_header();
                 <?php echo $svg; ?>
               </div>
               <div>
-                <div class="text-white text-[11px] font-bold"><?php echo esc_html($titulo); ?></div>
-                <div class="text-gray-300 text-[10px] break-words"><?php echo esc_html($valor); ?></div>
+                <div class="text-white text-xs font-bold"><?php echo esc_html($titulo); ?></div>
+                <div class="text-gray-300 text-xs break-words"><?php echo esc_html($valor); ?></div>
               </div>
             </div>
           <?php endforeach; ?>
@@ -138,11 +138,11 @@ get_header();
       <div>
         <div class="flex items-center gap-2 mb-1">
           <div class="w-8 h-[2px] bg-[#008323]"></div>
-          <span class="text-[#008323] font-bold text-[10px] tracking-widest uppercase"><?php echo cusco_l10n( 'REVIEWS', 'RESEÑAS' ); ?></span>
+          <span class="text-[#008323] font-bold text-xs tracking-widest uppercase"><?php echo cusco_l10n( 'REVIEWS', 'RESEÑAS' ); ?></span>
         </div>
         <h2 class="text-[#1D2834] text-[22px] sm:text-[26px] font-extrabold uppercase tracking-tight break-words"><?php echo cusco_l10n( 'OUR TESTIMONIALS', 'NUESTROS TESTIMONIOS' ); ?></h2>
       </div>
-      <a href="#" class="self-start sm:self-auto border border-[#008323] text-[#008323] font-bold text-[11px] px-4 sm:px-6 py-2.5 hover:bg-[#008323] hover:text-white transition-colors">
+      <a href="#" class="self-start sm:self-auto border border-[#008323] text-[#008323] font-bold text-xs px-4 sm:px-6 py-2.5 hover:bg-[#008323] hover:text-white transition-colors">
         <?php echo cusco_l10n( 'SEE ALL REVIEWS', 'VER TODAS LAS RESEÑAS' ); ?>
       </a>
     </div>
@@ -151,150 +151,150 @@ get_header();
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">IB</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">IB</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Isabel B.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '7 months ago', 'Hace 7 meses' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Isabel B.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '7 months ago', 'Hace 7 meses' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★★</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( 'The best trip of my life. The 4-day Inca Trail with Salka was flawless: food, tents and a guide who knows every stone.', 'La mejor excursión de mi vida. El Camino Inca de 4 días con Salka fue impecable: comida, carpas y un guía que conoce cada piedra.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★★</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( 'The best trip of my life. The 4-day Inca Trail with Salka was flawless: food, tents and a guide who knows every stone.', 'La mejor excursión de mi vida. El Camino Inca de 4 días con Salka fue impecable: comida, carpas y un guía que conoce cada piedra.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">MR</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">MR</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Mateo R.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '2 months ago', 'Hace 2 meses' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Mateo R.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '2 months ago', 'Hace 2 meses' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★★</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( 'We booked the one-day Machu Picchu tour and everything went perfectly. Punctual, great service and a guide who really knows Inca history.', 'Reservamos el tour a Machu Picchu de un día y todo salió perfecto. Puntualidad, buen trato y un guía súper preparado en historia inca.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★★</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( 'We booked the one-day Machu Picchu tour and everything went perfectly. Punctual, great service and a guide who really knows Inca history.', 'Reservamos el tour a Machu Picchu de un día y todo salió perfecto. Puntualidad, buen trato y un guía súper preparado en historia inca.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">CV</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">CV</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Camila V.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '1 month ago', 'Hace 1 mes' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Camila V.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '1 month ago', 'Hace 1 mes' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★★</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( "The Rainbow Mountain exceeded my expectations. Salka's team provided support horses and coca leaves for the altitude, very attentive the whole way.", 'La Montaña de 7 Colores superó mis expectativas. El equipo de Salka nos dio caballos de apoyo y coca para la altura, muy atentos todo el trayecto.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★★</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( "The Rainbow Mountain exceeded my expectations. Salka's team provided support horses and coca leaves for the altitude, very attentive the whole way.", 'La Montaña de 7 Colores superó mis expectativas. El equipo de Salka nos dio caballos de apoyo y coca para la altura, muy atentos todo el trayecto.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">DT</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">DT</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Diego T.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '5 months ago', 'Hace 5 meses' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Diego T.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '5 months ago', 'Hace 5 meses' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★☆</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( "Very well organized trip to the Sacred Valley. I'd only recommend leaving a bit earlier to avoid traffic in Pisac, but the guide was excellent.", 'Muy buena organización en el Valle Sagrado. Solo recomendaría salir un poco más temprano para evitar el tráfico en Pisac, pero el guía fue excelente.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★☆</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( "Very well organized trip to the Sacred Valley. I'd only recommend leaving a bit earlier to avoid traffic in Pisac, but the guide was excellent.", 'Muy buena organización en el Valle Sagrado. Solo recomendaría salir un poco más temprano para evitar el tráfico en Pisac, pero el guía fue excelente.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">LF</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">LF</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Lucia F.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '3 weeks ago', 'Hace 3 semanas' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Lucia F.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '3 weeks ago', 'Hace 3 semanas' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★★</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( 'I traveled solo and felt very safe the whole time. The Salkantay trek was an unforgettable experience, spectacular landscapes and delicious food in camp.', 'Viajé sola y me sentí muy segura todo el tiempo. El trekking a Salkantay fue una experiencia inolvidable, paisajes espectaculares y comida deliciosa en carpa.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★★</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( 'I traveled solo and felt very safe the whole time. The Salkantay trek was an unforgettable experience, spectacular landscapes and delicious food in camp.', 'Viajé sola y me sentí muy segura todo el tiempo. El trekking a Salkantay fue una experiencia inolvidable, paisajes espectaculares y comida deliciosa en carpa.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">JP</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">JP</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Javier P.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '8 months ago', 'Hace 8 meses' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Javier P.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '8 months ago', 'Hace 8 meses' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★★</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( 'We booked the Humantay tour with Salka and the service was top-notch from the reservation to the return to the hotel. Highly recommended.', 'Contratamos el tour de Humantay con Salka y la atención fue de primera desde la reserva hasta el regreso al hotel. Totalmente recomendado.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★★</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( 'We booked the Humantay tour with Salka and the service was top-notch from the reservation to the return to the hotel. Highly recommended.', 'Contratamos el tour de Humantay con Salka y la atención fue de primera desde la reserva hasta el regreso al hotel. Totalmente recomendado.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">NS</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">NS</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Natalia S.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '4 months ago', 'Hace 4 meses' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Natalia S.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '4 months ago', 'Hace 4 meses' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★★</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( "Excellent value for money. We went with our family to the Sacred Valley and the guide adapted to the kids' pace without any problem.", 'Excelente relación calidad-precio. Fuimos en familia al Valle Sagrado y el guía se adaptó al ritmo de los niños sin problema.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★★</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( "Excellent value for money. We went with our family to the Sacred Valley and the guide adapted to the kids' pace without any problem.", 'Excelente relación calidad-precio. Fuimos en familia al Valle Sagrado y el guía se adaptó al ritmo de los niños sin problema.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">AG</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">AG</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Andres G.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '6 months ago', 'Hace 6 meses' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Andres G.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '6 months ago', 'Hace 6 meses' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★★</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( 'The short 2-day Inca Trail was exactly what I was looking for: less demanding but just as impressive when arriving at the Sun Gate.', 'El Camino Inca corto de 2 días fue justo lo que buscaba: menos exigente pero igual de impresionante al llegar a la Puerta del Sol.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★★</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( 'The short 2-day Inca Trail was exactly what I was looking for: less demanding but just as impressive when arriving at the Sun Gate.', 'El Camino Inca corto de 2 días fue justo lo que buscaba: menos exigente pero igual de impresionante al llegar a la Puerta del Sol.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">VC</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">VC</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Valentina C.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '2 weeks ago', 'Hace 2 semanas' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Valentina C.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '2 weeks ago', 'Hace 2 semanas' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★★</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( 'They helped us put together a personalized 5-day itinerary combining Cusco, the Sacred Valley and Machu Picchu. Fast communication via WhatsApp the whole time.', 'Nos ayudaron a armar un itinerario personalizado de 5 días combinando Cusco, Valle Sagrado y Machu Picchu. Comunicación rápida por WhatsApp en todo momento.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★★</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( 'They helped us put together a personalized 5-day itinerary combining Cusco, the Sacred Valley and Machu Picchu. Fast communication via WhatsApp the whole time.', 'Nos ayudaron a armar un itinerario personalizado de 5 días combinando Cusco, Valle Sagrado y Machu Picchu. Comunicación rápida por WhatsApp en todo momento.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="rounded-lg border border-slate-200 bg-white p-4">
             <div class="flex items-center gap-2">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-[11px] font-bold text-white">ER</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-orange text-xs font-bold text-white">ER</span>
               <span>
-                <span class="block text-[12px] font-semibold text-navy">Emilio R.</span>
-                <span class="block text-[10px] text-slate-400"><?php echo cusco_l10n( '9 months ago', 'Hace 9 meses' ); ?></span>
+                <span class="block text-base font-semibold text-navy">Emilio R.</span>
+                <span class="block text-xs text-slate-400"><?php echo cusco_l10n( '9 months ago', 'Hace 9 meses' ); ?></span>
               </span>
             </div>
-            <div class="mt-3 text-[10px] text-[#00aa6c]">★★★★★</div>
-            <p class="mt-2 text-[11px] leading-relaxed text-slate-500"><?php echo cusco_l10n( 'Second time traveling with Salka Travel Peru, this time to Choquequirao. Professional staff, camping gear in great condition and excellent bilingual guides.', 'Segunda vez que viajo con Salka Travel Peru, esta vez a Choquequirao. Gente profesional, equipo de campamento en buen estado y guías bilingües excelentes.' ); ?></p>
-            <a href="#" class="mt-3 inline-block text-[10px] font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
+            <div class="mt-3 text-xs text-[#00aa6c]">★★★★★</div>
+            <p class="mt-2 text-xs leading-relaxed text-slate-500"><?php echo cusco_l10n( 'Second time traveling with Salka Travel Peru, this time to Choquequirao. Professional staff, camping gear in great condition and excellent bilingual guides.', 'Segunda vez que viajo con Salka Travel Peru, esta vez a Choquequirao. Gente profesional, equipo de campamento en buen estado y guías bilingües excelentes.' ); ?></p>
+            <a href="#" class="mt-3 inline-block text-xs font-semibold text-slate-400 underline"><?php echo cusco_l10n( 'Read more', 'Leer más' ); ?></a>
           </article>
         </div>
 
@@ -308,11 +308,11 @@ get_header();
         <div>
           <div class="flex items-center gap-2 mb-1">
             <div class="w-8 h-[2px] bg-[#008323]"></div>
-            <span class="text-[#008323] font-bold text-[10px] tracking-widest uppercase"><?php echo cusco_l10n( 'RELATED TOURS', 'TOURS RELACIONADOS' ); ?></span>
+            <span class="text-[#008323] font-bold text-xs tracking-widest uppercase"><?php echo cusco_l10n( 'RELATED TOURS', 'TOURS RELACIONADOS' ); ?></span>
           </div>
           <h2 class="text-[#1D2834] text-[26px] font-extrabold uppercase tracking-tight"><?php echo cusco_l10n( 'OUR RECOMMENDED TOURS', 'NUESTROS TOURS RECOMENDADOS' ); ?></h2>
         </div>
-        <a href="#" class="border border-[#008323] text-[#008323] font-bold text-[11px] px-6 py-2.5 hover:bg-[#008323] hover:text-white transition-colors">
+        <a href="#" class="border border-[#008323] text-[#008323] font-bold text-xs px-6 py-2.5 hover:bg-[#008323] hover:text-white transition-colors">
           <?php echo cusco_l10n( 'SEE ALL TOURS', 'VER TODOS LOS TOURS' ); ?>
         </a>
       </div>
@@ -374,7 +374,7 @@ get_header();
                     <h3 class="font-bold text-[#1D2834] text-base leading-snug mb-3"><?php the_title(); ?></h3>
 
                     <?php if ( !empty($rel_meta) ) : ?>
-                    <div class="flex items-center gap-3 text-gray-500 text-[10px] font-semibold mb-3">
+                    <div class="flex items-center gap-3 text-gray-500 text-xs font-semibold mb-3">
                       <?php if ( !empty($rel_meta['duration']) ) : ?>
                       <div class="flex items-center gap-1">
                         <svg class="w-3.5 h-3.5 text-[#008323]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -410,12 +410,12 @@ get_header();
                       <div class="flex flex-col">
                         <?php if ( !empty($rel_precio) ) : ?>
                           <span class="text-[#008323] font-extrabold text-[22px] leading-none"><?php echo esc_html($rel_precio); ?></span>
-                          <span class="text-gray-400 text-[10px] mt-1"><?php echo cusco_l10n( 'per person', 'por persona' ); ?></span>
+                          <span class="text-gray-400 text-xs mt-1"><?php echo cusco_l10n( 'per person', 'por persona' ); ?></span>
                         <?php else : ?>
                           <span class="text-[#008323] font-extrabold text-[13px] leading-none"><?php echo cusco_l10n( 'Contact for price', 'Consultar precio' ); ?></span>
                         <?php endif; ?>
                       </div>
-                      <a href="<?php the_permalink(); ?>" class="bg-[#008323] text-white text-[11px] font-bold px-4 py-2 rounded-[5px] hover:bg-[#00691c] transition-colors flex items-center gap-1.5">
+                      <a href="<?php the_permalink(); ?>" class="bg-[#008323] text-white text-xs font-bold px-4 py-2 rounded-[5px] hover:bg-[#00691c] transition-colors flex items-center gap-1.5">
                         <?php echo cusco_l10n( 'Learn more', 'Saber más' ); ?>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -433,12 +433,12 @@ get_header();
             ?>
           </div>
         </div>
-        <button type="button" class="related-tours-prev absolute left-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[#008323] bg-white text-[#008323] shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-[#008323] hover:text-white disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Previous related tour', 'Tour relacionado anterior' ) ); ?>">
+        <button type="button" class="related-tours-prev absolute left-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-green-700 text-white shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-green-800 disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Previous related tour', 'Tour relacionado anterior' ) ); ?>">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
-        <button type="button" class="related-tours-next absolute right-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[#008323] bg-white text-[#008323] shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-[#008323] hover:text-white disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Next related tour', 'Siguiente tour relacionado' ) ); ?>">
+        <button type="button" class="related-tours-next absolute right-0 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-green-700 text-white shadow-[0_4px_12px_rgba(29,40,52,0.12)] transition hover:bg-green-800 disabled:cursor-not-allowed disabled:opacity-40" aria-label="<?php echo esc_attr( cusco_l10n( 'Next related tour', 'Siguiente tour relacionado' ) ); ?>">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
           </svg>
